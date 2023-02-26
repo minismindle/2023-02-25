@@ -1,0 +1,64 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
+#include <map>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    vector<int> v;
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+
+    // 알고리즘
+    // find
+    vector<int> ::iterator itFind = find(v.begin(), v.end(),50);
+    
+    struct CanDivideBy11
+    {
+        bool operator()(int n)
+        {
+            return (n % 11) == 0;
+        }
+    };
+    auto itFind2 = find_if(v.begin(), v.end(),CanDivideBy11());
+    
+    struct IsOdd
+    {
+        bool operator()(int n)
+        {
+            return n % 2;
+        }
+    };
+    auto itFind3 = count_if(v.begin(), v.end(),IsOdd());
+    // 모든 데이터가 홀수?
+    all_of(v.begin(), v.end(), IsOdd());
+    // 홀수인 데이터가 하나라도 있습니까?
+    any_of(v.begin(), v.end(), IsOdd());
+    // 모든 데이터가 홀수가 아닙니까?
+    none_of(v.begin(), v.end(), IsOdd());
+
+    struct MultiplyBy3
+    {
+        void operator()(int& n)
+        {
+            n += 3;
+        }
+    };
+    auto itFind4 = for_each(v.begin(), v.end(),MultiplyBy3());
+    
+    remove(v.begin(), v.end(), 2);
+
+    auto it = remove_if(v.begin(), v.end(),IsOdd());
+
+    for (auto i = v.begin(); i < v.end(); ++i)
+    {
+        cout << *i << endl;
+    }
+    return 0;
+}
+
