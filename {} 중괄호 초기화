@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
+#include <map>
+#include <set>
+#include <algorithm>
+using namespace std;
+class Knight
+{
+public:
+    Knight()
+    {
+        cout << "Knight" << endl;
+    }
+    Knight(int a, int b)
+    {
+        cout << " Knight(int ,int)" << endl;
+    }
+    Knight(initializer_list<int> li)
+    {
+        cout << "Knight(initializer_list)" << endl;
+    }
+    void k6()
+    {
+        cout << "k6" << endl;
+    }
+};
+
+int main()
+{
+    // 중괄호 초기화 {}
+    int a = 0;
+    int b(0);
+    int c{ 0 };
+    Knight k1;
+    Knight k2 = k1; //복사 생성자(대입 연산자 x)
+
+    Knight k3{k2};// 기본생성자
+
+    vector<int> v1;
+
+    int arr[] = { 1,2,3,4 };
+
+    // 중괄호 초기화
+    // 1) vector등 container과 잘 어울린다
+    vector<int> v3{ 1,2,3,4 };
+    // 2) 축소 변환 방지
+    int x = 0;
+    // double y{ x };
+    // 3) Bonus
+    Knight k4{};
+    Knight k5{ 1,2 };
+
+    // 중괄호 초기화 {}를 기본으로 간다
+    // 초기화 문법의 일치화
+    // 축소 변환 방지
+
+    return 0;
+}
+
