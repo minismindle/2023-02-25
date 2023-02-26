@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <list>
+#include <deque>
+#include <map>
+#include <set>
+#include <algorithm>
+
+using namespace std;
+class Creature
+{
+public:
+    virtual void Attack()
+    {
+        cout << "Creature!" << endl;
+    }
+};
+class Player : public Creature
+{
+public:
+    virtual void Attack()
+    {
+        cout << "Player!" << endl;
+    }
+};
+class Knight : public Player
+{
+    // 재정의(override)
+public:
+    virtual void Attack() override
+    {
+        cout << "Knight!" << endl;
+    }
+};
+int main()
+{
+    Creature* c = new Knight();
+
+    c->Attack();
+
+    return 0;
+}
+
